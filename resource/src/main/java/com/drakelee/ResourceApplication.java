@@ -5,10 +5,18 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.File;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +30,34 @@ public class ResourceApplication extends WebSecurityConfigurerAdapter {
 
 	private String message = "Hello World";
 	private List<Change> changes = new ArrayList<>();
+
+    @RequestMapping(value = "/background", method = RequestMethod.GET)
+    public HttpEntity<byte[]> getBackground() {
+        try { 
+        byte[] image;
+        BufferedImage bi = ImageIO.read(new File("src/main/resources/static/img/sunset_bkg.jpg"));
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(bi, "jpg", baos);
+        baos.flush();
+        image = baos.toByteArray();
+        baos.close();
+
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.IMAGE_JPEG);
+        headers.setContentLength(image.length);
+        return new HttpEntity<byte[]>(image, headers);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public Message test() {
+
+            File file = new File("src/main/resources/static/img/sunset_bkg.jpg");
+            return new Message(file.getAbsolutePath());
+    }
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public Message home() {
