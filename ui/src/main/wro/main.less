@@ -1,7 +1,49 @@
 @brand-primary: #de8579;
+@base-url: "http://52.24.247.1:8080/resource";
+@color-name: #754c4c;
+@color-ign: #ba1e26;
+
+
+body {
+    background-image: url("@{base-url}/background");
+}
+
+div.index.container {
+    width: 100%;
+}
+
+li.index {
+    float: left;
+    width: 200px;
+}
+
+h1.center {
+    color: @color-name;
+    font-size: 70px;
+}
 
 .center {
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    background: rgba(255, 255, 255, 0.7);
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
 }

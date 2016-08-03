@@ -6,7 +6,6 @@
 	<groupId>com.drakelee</groupId>
 	<artifactId>personal-resource</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
 
 	<name>Proxy Resource</name>
 	<description>Resource Server for Personal</description>

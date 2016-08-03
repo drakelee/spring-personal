@@ -1,0 +1,287 @@
+@brand-primary: #de8579;
+@base-url: "http://52.24.247.1:8080/resource";
+@color-ign: #ba1e26;
+
+html {
+    background-color: white;
+}
+
+body {
+    background-color: grey;
+}
+
+h1 {
+    color: white;
+    font-size: 120px;
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+a {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding-bottom: 15px;
+    font-size: 25px;
+    color: white;
+}
+
+// Shared properties for project pictures
+.project-list-image {
+    position: absolute;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
+
+.index.container.ign {
+    background: @color-ign;
+}
+
+.index.container.ign > ul > li > a {
+    font-size: 15px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.project-image-container.intro {
+    background-image: url("@{base-url}/img/code-foo-2015.jpg");
+    background-position-x: -590px;
+    background-position-y: -150px;
+    .project-list-image;
+}
+
+.project-image-container.blogs {
+    background-image: url("@{base-url}/img/mobile-blog.jpg");
+    .project-list-image;
+}
+
+.project-image-container.ps4 {
+    background-image: url("@{base-url}/img/ps4.jpg");
+    background-position: center;
+    background-size: cover;
+    .project-list-image;
+}
+
+.project-image-container.keyboard {
+    background-image: url("@{base-url}/img/keyboard.jpg");
+    background-position-y: -118px;
+    .project-list-image;
+}
+
+.project-image-container.cms {
+    background-image: url("@{base-url}/img/cms-tools.jpg");
+    .project-list-image;
+}
+
+.project-image-container.annotations {
+    background-image: url("@{base-url}/img/annotations.jpg");
+    background-position: center;
+    background-size: 400%;
+    .project-list-image;
+}
+
+.project-image-container.home {
+    background-image: url("@{base-url}/img/ign-logo.jpg");
+    background-size: 100%;
+    background-position: cover;
+    .project-list-image;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+    min-width: 800px;
+    padding: 0px;
+}
+
+.header {
+    background-color: @color-ign;
+    width: 100%;
+    padding-top: 100px;
+}
+
+.header.intro {
+    padding-top: 0px;
+    background: white;
+}
+
+.header.blogs {
+    padding-top: 0px;
+    background: white;
+}
+
+.container-item.intro {
+    min-height: 573px;
+    background-image: url("@{base-url}/img/code-foo-2015.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-width: 720px;
+    width: 100%;
+    padding: 0px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.container-item.blogs {
+    .container-item.intro;
+    background-image: url("@{base-url}/img/mobile-blog.jpg");
+}
+
+.container-title {
+    color: white;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 50px;
+    font-weight: bold;
+    background-color: rgba(0,0,0,0.6);
+    padding: 25px 0;
+}
+
+
+// Temporary portrait. Not in production.
+.item-img-intro {
+    position: relative;
+//    display: inline-block;
+    background-image: url("@{base-url}/img/code-foo-2015.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 300px;
+    width: 400px;
+    margin: 40px 0px 0px 0px;
+    display: none;
+
+}
+
+.item-intro-description {
+    color: black;
+    position: relative;
+    display: inline;
+    float: right;
+    margin-right: 170px;
+    margin-left: 170px;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.project-container {
+    min-width: 720px;
+    width: 100%;
+}
+
+.project-container.min {
+    position: absolute;
+    bottom: 0;
+}
+
+.project-carousel {
+    float: left;
+    margin: 7.5px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    width:100%;
+}
+
+.project-li {
+    background: white;
+    display: block;
+    position: relative;
+    float: left;
+    height: 360px;
+    width: 14.28%;
+    text-align: center;
+    overflow: hidden;
+}
+
+.project-li.min {
+    height: 35px;
+}
+
+.project-image-container {
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.project-item-lower {
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.2) 100%);
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.2) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    bottom: 0;
+
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.project-item-name {
+    visibility: hidden;
+    -o-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.project-item-name.min {
+    padding-bottom: 0px;
+}
+
+.project-li:hover {
+    cursor: pointer;
+}
+
+.project-li:hover > .project-image-container {
+    -moz-filter: blur(2px);
+    -ms-filter: blur(2px);
+    -o-filter: blur(2px);
+    -webkit-filter: blur(2px);
+    filter: blur(2px);
+    filter: url(#blur);    
+}
+
+.project-li:hover > .project-item-lower {
+    background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0) 100%);
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 100%);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 );
+}
+
+.project-li:hover > .project-item-lower > .project-item-name {
+    color: @color-ign;
+    font-size: 30px;
+}
+
+.project-li:hover > .project-item-lower > .project-item-name.min {
+    visibility: visible;
+    color: @color-ign;
+    font-size: 25px;
+}

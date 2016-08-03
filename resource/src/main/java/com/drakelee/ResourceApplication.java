@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @SpringBootApplication
 @RestController	
@@ -31,21 +32,42 @@ public class ResourceApplication extends WebSecurityConfigurerAdapter {
 	private String message = "Hello World";
 	private List<Change> changes = new ArrayList<>();
 
+	@RequestMapping(value = "/img", method = RequestMethod.GET)
+	public HttpEntity<byte[]> getImage(@RequestParam String img) {
+		try {
+			byte[] image;
+	        BufferedImage bi = ImageIO.read(new File("src/main/resources/static/img/" + img));
+	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	        ImageIO.write(bi, "jpg", baos);
+	        baos.flush();
+	        image = baos.toByteArray();
+	        baos.close();
+	
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.IMAGE_JPEG);
+	        headers.setContentLength(image.length);
+        	return new HttpEntity<byte[]>(image, headers);	
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
     @RequestMapping(value = "/background", method = RequestMethod.GET)
     public HttpEntity<byte[]> getBackground() {
         try { 
-        byte[] image;
-        BufferedImage bi = ImageIO.read(new File("src/main/resources/static/img/sunset_bkg.jpg"));
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(bi, "jpg", baos);
-        baos.flush();
-        image = baos.toByteArray();
-        baos.close();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.IMAGE_JPEG);
-        headers.setContentLength(image.length);
-        return new HttpEntity<byte[]>(image, headers);
+	        byte[] image;
+	        BufferedImage bi = ImageIO.read(new File("src/main/resources/static/img/sunset_bkg.jpg"));
+	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	        ImageIO.write(bi, "jpg", baos);
+	        baos.flush();
+	        image = baos.toByteArray();
+	        baos.close();
+	
+	        HttpHeaders headers = new HttpHeaders();
+	        headers.setContentType(MediaType.IMAGE_JPEG);
+	        headers.setContentLength(image.length);
+	        return new HttpEntity<byte[]>(image, headers);
         } catch (IOException e) {
             e.printStackTrace();
         }
